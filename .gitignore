@@ -1,0 +1,15 @@
+node_modules/
+dist/
+dist-electron/
+build/
+release/
+.env
+.env.local
+*.log
+.DS_Store
+backend/src/generated/
+backend/uploads/
+backend/*.db
+backend/*.db-journal
+frontend/dist/
+electron/migrations-manifest.json

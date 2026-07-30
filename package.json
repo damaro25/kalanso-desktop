@@ -1,0 +1,55 @@
+{
+  "name": "kalanso-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kalanso — ERP scolaire 100% hors-ligne (Electron + SQLite)",
+  "main": "electron/main.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "copy:frontend": "node scripts/copy-frontend.js",
+    "generate:manifest": "node electron/generate-manifest.js",
+    "build": "npm run build:backend && npm run build:frontend && npm run copy:frontend && npm run generate:manifest",
+    "electron": "electron .",
+    "rebuild:backend-for-electron": "electron-rebuild --version=43.2.0 --module-dir=backend --which-module=better-sqlite3 --force",
+    "rebuild:backend-for-node": "npm --prefix backend rebuild better-sqlite3",
+    "dist": "npm run build && npm run rebuild:backend-for-electron && electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1"
+  },
+  "build": {
+    "appId": "gn.kalanso.desktop",
+    "productName": "Kalanso",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "backend/dist/**/*",
+      "backend/package.json",
+      "backend/node_modules/**/*",
+      "node_modules/**/*",
+      "!**/*.map",
+      "!**/*.ts",
+      "!**/node_modules/**/{test,tests,*.md,*.markdown,__tests__}/**"
+    ],
+    "npmRebuild": true,
+    "asarUnpack": [
+      "**/node_modules/better-sqlite3/**"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": false
+    }
+  }
+}
