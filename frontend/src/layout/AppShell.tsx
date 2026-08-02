@@ -23,6 +23,7 @@ import {
   IconBooks,
   IconStairs,
   IconLogout,
+  IconUserCog,
 } from '@tabler/icons-react';
 import { useAuth } from '../auth/AuthContext';
 import { ROLE_LABELS, type Role } from '../lib/roles';
@@ -95,6 +96,7 @@ const GROUPS: MenuGroup[] = [
     icon: IconBriefcase,
     items: [
       { label: 'Personnel', to: '/personnel', icon: IconBriefcase, roles: ['FONDATEUR', 'CHEF_ETABLISSEMENT'] },
+      { label: 'Utilisateurs', to: '/utilisateurs', icon: IconUserCog, roles: ['FONDATEUR', 'CHEF_ETABLISSEMENT'] },
       { label: 'Niveaux', to: '/niveaux', icon: IconStairs, roles: ['FONDATEUR', 'CHEF_ETABLISSEMENT'] },
       { label: 'Logistique', to: '/logistique', icon: IconBoxSeam, roles: ['FONDATEUR', 'CHEF_ETABLISSEMENT'] },
       {
