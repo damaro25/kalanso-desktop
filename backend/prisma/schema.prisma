@@ -140,14 +140,18 @@ model Niveau {
 // plusieurs lignes, ex. par trimestre) — les frais d'inscription sont un
 // montant unique, pas fractionné.
 model FraisInscriptionNiveau {
-  id              String   @id @default(cuid())
-  ecoleId         String
-  ecole           Ecole    @relation(fields: [ecoleId], references: [id])
-  niveauId        String
-  niveau          Niveau   @relation(fields: [niveauId], references: [id])
-  anneeScolaireId String
-  montant         Decimal
-  createdAt       DateTime @default(now())
+  id                   String   @id @default(cuid())
+  ecoleId              String
+  ecole                Ecole    @relation(fields: [ecoleId], references: [id])
+  niveauId             String
+  niveau               Niveau   @relation(fields: [niveauId], references: [id])
+  anneeScolaireId      String
+  montant              Decimal
+  // Tarif pour les élèves déjà inscrits une année antérieure (réinscription).
+  // Facultatif : si non défini, le tarif "nouveaux" (montant) s'applique aussi
+  // aux réinscriptions.
+  montantReinscription Decimal?
+  createdAt            DateTime @default(now())
 
   @@unique([ecoleId, niveauId, anneeScolaireId])
   @@index([ecoleId])
