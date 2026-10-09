@@ -21,6 +21,7 @@ import { LogistiqueModule } from './logistique/logistique.module';
 import { FinanceModule } from './finance/finance.module';
 import { BibliothequeModule } from './bibliotheque/bibliotheque.module';
 import { ParcoursModule } from './parcours/parcours.module';
+import { CartesScolairesModule } from './cartes-scolaires/cartes-scolaires.module';
 import { SetupModule } from './setup/setup.module';
 
 @Module({
@@ -53,6 +54,7 @@ import { SetupModule } from './setup/setup.module';
     FinanceModule,
     BibliothequeModule,
     ParcoursModule,
+    CartesScolairesModule,
     ReportingModule,
   ],
   controllers: [AppController],

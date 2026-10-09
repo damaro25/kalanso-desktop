@@ -9,6 +9,7 @@ import { fetchClassesCourantes } from '../../api/classes';
 import { createPaiement, ouvrirFacturePdf, ouvrirRecu } from '../../api/finances';
 import { telechargerBulletin, ouvrirBulletinPdf } from '../../api/notes';
 import { PayerInscription } from './PayerInscription';
+import { CarteScolaire } from './CarteScolaire';
 
 export function EleveDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -29,6 +30,7 @@ export function EleveDetailPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['eleve-fiche', id] });
       queryClient.invalidateQueries({ queryKey: ['classes'] });
+      queryClient.invalidateQueries({ queryKey: ['carte-info', id] });
       notifications.show({ message: 'Élève affecté à la classe', color: 'green' });
     },
   });
@@ -109,6 +111,8 @@ export function EleveDetailPage() {
           </Button>
         </Group>
       </Paper>
+
+      <CarteScolaire eleveId={id!} />
 
       <PayerInscription eleveId={id!} aUneClasse={!!inscriptionActuelle} />
 
