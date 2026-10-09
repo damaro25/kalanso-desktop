@@ -17,13 +17,21 @@ Version 100% hors-ligne de [La cible du formateur](https://github.com/damaro25/k
 
 ## Installation
 
+Le dépôt contient trois paquets indépendants (racine, `backend/`, `frontend/`) : chacun a son `npm install`.
+
 ```bash
 npm install
+npm --prefix backend install
+npm --prefix frontend install
 ```
 
-Installe les dépendances des trois paquets (`backend/`, `frontend/`, racine) et déclenche automatiquement la recompilation de `better-sqlite3` pour l'ABI d'Electron (`postinstall`).
+Le `npm install` de la racine n'installe que la racine (Electron, electron-builder, better-sqlite3) et déclenche la recompilation de `better-sqlite3` pour l'ABI d'Electron (`postinstall`).
 
 ⚠️ Voir la section **better-sqlite3** ci-dessous avant de lancer le backend en développement juste après un `npm install` à la racine.
+
+Pour développer ou lancer le backend seul, copiez `backend/.env.example` en `backend/.env`. Ce fichier n'est pas nécessaire pour construire l'installateur.
+
+Guide complet d'installation sur un poste Windows et de fabrication de l'installateur : [docs/INSTALLATION_WINDOWS.md](docs/INSTALLATION_WINDOWS.md).
 
 ## Développement
 
@@ -42,7 +50,7 @@ Première utilisation en local : la base SQLite (`backend/dev.db`, définie dans
 ## Construire et empaqueter
 
 ```bash
-npm run build   # backend (nest build) + frontend (vite build) + copie dans backend/dist/public + manifeste de migrations
+npm run build   # backend (prisma generate + nest build) + frontend (vite build) + copie dans backend/dist/public + manifeste de migrations
 npm run dist    # build + recompilation Electron de better-sqlite3 + electron-builder (installateur NSIS)
 ```
 
