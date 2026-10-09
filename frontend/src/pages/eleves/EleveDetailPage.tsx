@@ -8,6 +8,7 @@ import { fetchEleveFiche, inscrireEleve } from '../../api/eleves';
 import { fetchClassesCourantes } from '../../api/classes';
 import { createPaiement, ouvrirFacturePdf, ouvrirRecu } from '../../api/finances';
 import { telechargerBulletin, ouvrirBulletinPdf } from '../../api/notes';
+import { PayerInscription } from './PayerInscription';
 
 export function EleveDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -108,6 +109,8 @@ export function EleveDetailPage() {
           </Button>
         </Group>
       </Paper>
+
+      <PayerInscription eleveId={id!} aUneClasse={!!inscriptionActuelle} />
 
       <Paper withBorder p="md">
         <Title order={4} mb="sm">
