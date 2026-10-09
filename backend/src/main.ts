@@ -14,7 +14,8 @@ export async function bootstrap(): Promise<string> {
   app.useGlobalFilters(new PrismaExceptionFilter(app.get(HttpAdapterHost).httpAdapter));
   // 0 = port choisi par l'OS. Frontend et backend sont toujours sur la même
   // machine : aucun intérêt à fixer un port qui pourrait déjà être occupé.
-  await app.listen(process.env.PORT ?? 0);
+  // Interface de bouclage uniquement : sans cela l'API serait joignable depuis le réseau de l'école.
+  await app.listen(process.env.PORT ?? 0, '127.0.0.1');
   return app.getUrl();
 }
 
