@@ -2,7 +2,7 @@
   "name": "kalanso-desktop",
   "version": "1.0.0",
   "private": true,
-  "description": "Kalanso — ERP scolaire 100% hors-ligne (Electron + SQLite)",
+  "description": "La cible du formateur — ERP scolaire 100% hors-ligne (Electron + SQLite)",
   "main": "electron/main.js",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -25,7 +25,7 @@
   },
   "build": {
     "appId": "gn.kalanso.desktop",
-    "productName": "Kalanso",
+    "productName": "La cible du formateur",
     "directories": {
       "output": "release"
     },

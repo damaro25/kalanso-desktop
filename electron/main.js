@@ -50,6 +50,10 @@ function runMigrations(dbPath) {
 }
 
 async function main() {
+  // Le nom affiché de l'application a changé, mais pas le dossier de données : Electron le dérive du
+  // nom du produit, donc sans cette ligne une installation existante repartirait d'une base vide.
+  app.setPath('userData', path.join(app.getPath('appData'), 'Kalanso'));
+
   await app.whenReady();
 
   const userData = app.getPath('userData');
@@ -73,7 +77,7 @@ async function main() {
   const fenetre = new BrowserWindow({
     width: 1280,
     height: 800,
-    title: 'Kalanso',
+    title: 'La cible du formateur',
   });
   fenetre.loadURL(url);
 }
@@ -83,6 +87,6 @@ app.on('window-all-closed', () => {
 });
 
 main().catch((erreur) => {
-  console.error('Échec du démarrage de Kalanso :', erreur);
+  console.error('Échec du démarrage de La cible du formateur :', erreur);
   app.quit();
 });

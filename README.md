@@ -1,6 +1,6 @@
-# Kalanso Desktop
+# La cible du formateur Desktop
 
-Version 100% hors-ligne de [Kalanso](https://github.com/damaro25/kalanso), l'ERP scolaire pour les écoles privées guinéennes. Contrairement à la version web (SaaS multi-écoles, connectée), cette version s'installe entièrement sur l'ordinateur d'une école et fonctionne sans aucune connexion internet : base de données SQLite locale, backend et frontend empaquetés dans une seule application Electron.
+Version 100% hors-ligne de [La cible du formateur](https://github.com/damaro25/kalanso), l'ERP scolaire pour les écoles privées guinéennes. Contrairement à la version web (SaaS multi-écoles, connectée), cette version s'installe entièrement sur l'ordinateur d'une école et fonctionne sans aucune connexion internet : base de données SQLite locale, backend et frontend empaquetés dans une seule application Electron.
 
 ## Architecture
 
@@ -46,7 +46,7 @@ npm run build   # backend (nest build) + frontend (vite build) + copie dans back
 npm run dist    # build + recompilation Electron de better-sqlite3 + electron-builder (installateur NSIS)
 ```
 
-L'installateur final est généré dans `release/Kalanso Setup <version>.exe`. Pour ne produire que le dossier non empaqueté (plus rapide, utile pour tester) :
+L'installateur final est généré dans `release/La cible du formateur Setup <version>.exe`. Pour ne produire que le dossier non empaqueté (plus rapide, utile pour tester) :
 ```bash
 npm run build && npm run rebuild:backend-for-electron && npx electron-builder --dir
 ```

@@ -32,11 +32,11 @@ export function PremierDemarragePage() {
 
   return (
     <Center h="100vh" bg="kalanso.0">
-      <Paper shadow="md" p="xl" w={440} withBorder>
+      <Paper shadow="md" p="xl" w={{ base: '100%', sm: 440 }} withBorder>
         <form onSubmit={handleSubmit}>
           <Stack>
             <Title order={2} c="kalanso.7">
-              Bienvenue sur Kalanso
+              Bienvenue sur La cible du formateur
             </Title>
             <Text size="sm" c="dimmed">
               Première utilisation : configurez votre école et votre compte fondateur. Cette étape ne s'affiche
